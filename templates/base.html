@@ -74,6 +74,70 @@ color:HotPink;
   background-color:HotPink;
   color: white;
 }
+/* Float container */
+      #p-float {
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Clearfix */
+        overflow: auto;
+      }
+      #p-float::after {
+        /* Clearfix */
+        content: "";
+        clear: both;
+        display: table;
+      }
+      /* Product items */
+      div.p-float {
+        float: left;
+        width: 25%;
+      }
+      div.p-float-in {
+        box-sizing: border-box;
+        margin: 5px;
+        padding: 10px;
+        border: 1px solid #f2dcdc;
+        background: #fff7f7;
+      }
+      img.p-img {
+        width: 100%;
+        height: auto;
+      }
+      div.p-name {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+      div.p-price {
+        color: #f44242;
+      }
+      div.p-desc {
+        color: #888;
+        font-size: 0.9em;
+      }
+      button.p-add {
+        background: #f46b41;
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 5px 5px 5px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      /* Responsive */
+      @media only screen and (max-width: 1024px) {
+        div.p-float { width: 33%; }
+      }
+      @media only screen and (max-width: 600px) {
+        div.p-float { width: 50%; }
+      }
+      /* [DOES NOT MATTER] */
+      html, body {
+        padding: 0;
+        margin: 0;
+        font-family: arial, sans-serif;
+      }
 </style>
 <body class="w3-content" style="max-width:1200px">
 
