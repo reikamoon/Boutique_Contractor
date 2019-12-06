@@ -1,0 +1,12 @@
+
+<!-- Product grid -->
+{% for clothes in clothes %}
+<div class="w3-row-padding w3-padding-16 w3-center" id="products">
+<div class="w3-quarter">
+  <a href='catalogue/{{ clothes.id }}'><img src="{{ clothes.image_url }}" alt= "Product" height= "300" width = "200" ></a>
+    <p>{{ clothes.name }}</p><br>
+    <b>{{ clothes.price }}</b>
+    <p><a href="#" class="w3-button w3-white w3-padding-large w3-large">Add to Cart</a></p>
+</div>
+</div>
+{% endfor %}
