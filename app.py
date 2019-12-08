@@ -36,7 +36,7 @@ def new_entry():
 @app.route('/catalogue', methods=['POST'])
 def product_submit():
     #Submit a new entry to the Clothes Database.
-    clothes = {
+    new_product = {
     'name': request.form.get('name'),
     'price': request.form.get('price'),
     'image': request.form.get('image_url')
