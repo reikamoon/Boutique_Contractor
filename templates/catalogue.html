@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br>
+<center><h1>Current Catalogue</h1></center>
+<center><h2><a href="/catalogue/new">Add a Product</a></h2></center>
+{% include 'partials/navbaralt.html' %}
+{% include 'partials/productgrid.html' %}
+{% endblock content %}

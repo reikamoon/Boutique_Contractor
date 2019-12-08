@@ -16,6 +16,49 @@ app = Flask(__name__)
 def homepage():
     return render_template('homepage.html', clothes=clothes.find())
 
+@app.route('/catalogue/')
+def catalogue():
+    return render_template('catalogue.html', clothes=clothes.find())
+
+@app.route('/catalogue/<clothes_id>', methods=['GET', 'POST'])
+def show_product(clothes_id):
+    clothes = clothes.find_one({'_id': ObjectId(clothes_id)})
+    return render_template('show_animal.html', clothes=clothes)
+
+@app.route('/catalogue/new')
+def new_entry():
+    return render_template('new_entry.html', clothes={}, title='Add an Entry')
+
+@app.route('/catalogue', methods=['POST'])
+def product_submit():
+    clothes = {
+    'name': request.form.get('name'),
+    'price': request.form.get('price'),
+    'image': request.form.get('image_url')
+    }
+    print(clothes)
+    clothes_id = clothes.insert_one(clothes).inserted_id
+    return redirect(url_for('product_display.html', clothes_id=clothes_id))
+
+@app.route('/edit/<clothes_id>')
+def clothes_edit(clothes_id):
+    product = clothes.find_one({'_id': ObjectId(clothes_id)})
+    return render_template('product_edit.html', clothes=clothes, title='Edit Product')
+
+@app.route('/edit/<clothes_id>', methods=['POST'])
+def clothes_update(clothes_id):
+    updated_product = {
+        'name': request.form.get('name'),
+        'price': request.form.get('price'),
+        'image': request.form.get('image_url')
+    }
+    clothes.update_one(
+        {'_id': ObjectId(clothes_id)},
+        {'$set': updated_product})
+    return redirect(url_for('product_display', clothes_id=clothes_id))
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))

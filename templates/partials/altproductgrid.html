@@ -1,33 +1,10 @@
 <!-- Alternate design for product grid -->
 <!-- ALTERNATE GRID -->
-{% for clothes in clothes %}
-<div id="p-float">
-      <div class="p-float"><div class="p-float-in">
-        <img class="p-img" src="{{ clothes.image_url }}" height = "300" width = "200"/>
-        <div class="p-name">{{ clothes.name }}</div>
-        <div class="p-price">{{ clothes.price }}</div>
-        <button class="p-add">Add to Cart</button>
-      </div></div>
-{% endfor %}
-
-{% for clothes in clothes %}
-<div align="center">
-<div class="p-float"><div class="p-float-in">
-        <img class="p-img" src="{{ clothes.image_url }}" height = "300" width = "200"/>
-        <div class="p-name">Item B</div>
-        <div class="p-price">$88.88</div>
-        <div class="p-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        <button class="p-add">Add to Cart</button>
-      </div></div></div>
-{% endfor %}
-
-{% for clothes in clothes %}
-<div align = "right">
-<div class="p-float"><div class="p-float-in">
-        <img class="p-img" src="{{ clothes.image_url }}" height = "300" width = "200"/>
-        <div class="p-name">Item C</div>
-        <div class="p-price">$77.77</div>
-        <div class="p-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        <button class="p-add">Add to Cart</button>
-      </div></div></div>
-{% endfor %}
+<div class="grid-container">
+ {% for clothes in clothes %}
+ <a href='catalogue/{{ clothes.id }}'><img src="{{ clothes.image_url }}" alt= "Product" height= "300" width = "200" ></a>
+   <p>{{ clothes.name }}</p><br>
+   <b>{{ clothes.price }}</b>
+   <p><a href="#" class="w3-button w3-white w3-padding-large w3-large">Add to Cart</a></p>
+  {% endfor %}
+</div>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add a Listing</h1>
+<br>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/catalogue'>
+            {% include 'partials/clothes_form.html' %}
+            <!-- BUTTON -->
+                <center><div class='form-group'>
+                    <button class='btn btn-primary' type='submit'>Submit</button>
+                </div></center>
+        </form>
+    </div>
+</div>
+{% endblock content %}
