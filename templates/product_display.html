@@ -1,7 +1,7 @@
 <!-- Display a Single Product -->
 {% extends 'base.html' %}
 
-{% block}
+{% block content %}
 <style>
   .image {
   position: absolute;
@@ -9,4 +9,6 @@
   top: 100px;
 }
 </style>
-<img src = "{{clothes.id}}" alt = "Product" height = "300" width = "200">
+<br><br><br>
+<img src = "{{ clothes.image_url }}" alt = "if you can see this i messed up bad" height = "300" width = "200">
+{% endblock content %}

@@ -25,8 +25,8 @@ def catalogue():
 @app.route('/catalogue/<clothes_id>', methods=['GET', 'POST'])
 def show_product(clothes_id):
     #Shows a single Product
-    clothes = clothes.find_one({'_id': ObjectId(clothes_id)})
-    return render_template('show_animal.html', clothes=clothes)
+    product = clothes.find_one({'_id': ObjectId(clothes_id)})
+    return render_template('product_display.html', clothes=clothes)
 
 @app.route('/catalogue/new')
 def new_entry():
@@ -39,11 +39,11 @@ def product_submit():
     new_product = {
     'name': request.form.get('name'),
     'price': request.form.get('price'),
-    'image': request.form.get('image_url')
+    'image_url': request.form.get('image_url')
     }
-    print(clothes)
+    print(new_product)
     clothes_id = clothes.insert_one(new_product).inserted_id
-    return redirect(url_for('product_display.html', clothes_id=clothes_id))
+    return redirect(url_for('show_product', clothes_id=clothes_id))
 
 @app.route('/edit/<clothes_id>')
 def clothes_edit(clothes_id):
@@ -57,7 +57,7 @@ def clothes_update(clothes_id):
     updated_product = {
         'name': request.form.get('name'),
         'price': request.form.get('price'),
-        'image': request.form.get('image_url')
+        'image_url': request.form.get('image_url')
     }
     clothes.update_one(
         {'_id': ObjectId(clothes_id)},
