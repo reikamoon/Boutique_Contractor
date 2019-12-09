@@ -26,7 +26,8 @@ def catalogue():
 def show_product(clothes_id):
     #Shows a single Product
     product = clothes.find_one({'_id': ObjectId(clothes_id)})
-    return render_template('product_display.html', clothes=clothes)
+    print(product)
+    return render_template('product_display.html', clothes=product)
 
 @app.route('/catalogue/new')
 def new_entry():
@@ -49,7 +50,7 @@ def product_submit():
 def clothes_edit(clothes_id):
     #Edit a product
     product = clothes.find_one({'_id': ObjectId(clothes_id)})
-    return render_template('product_edit.html', clothes=clothes, title='Edit Product')
+    return render_template('product_edit.html', clothes=product, title='Edit Product')
 
 @app.route('/edit/<clothes_id>', methods=['POST'])
 def clothes_update(clothes_id):

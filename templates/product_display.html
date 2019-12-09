@@ -5,10 +5,67 @@
 <style>
   .image {
   position: absolute;
-  left: 100px;
+  left: 90px;
   top: 100px;
 }
+  .title {
+  position: absolute;
+  left: 700px;
+  top: 100px;
+  }
+  .sizes {
+  position: absolute;
+  left: 780px;
+  top: 190px;
+  }
+  .price {
+  position: absolute;
+  left: 10px;
+  top: 100px;
+  }
+  .button {
+  position: absolute;
+  left: 90px;
+  top: 95px;
+  }
+  .deletebutton {
+  position: absolute;
+  left: 150px;
+  top: 165px;
+  }
+  .editbutton {
+  position: absolute;
+  left: 10px;
+  top: 160px;
+  }
 </style>
 <br><br><br>
-<img src = "{{ clothes.image_url }}" alt = "if you can see this i messed up bad" height = "300" width = "200">
+<!-- Product Name -->
+<div class = "title"><h1><b>{{ clothes.name }}</b></h1></div>
+<!-- Product Image -->
+<div class = "image"><img src = "{{ clothes.image_url }}" alt = "if you can see this i messed up bad" height = "700" width = "500"></div>
+<!-- Sizes Selection -->
+<div class = "sizes"><ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Small</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Medium</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Large</a>
+  </li>
+</ul>
+<!-- Price And Add to Cart button -->
+<div class= "price"><h2>{{ clothes.price }}</h2></div>
+<div class = "button"><a href="#" class="w3-button w3-white w3-padding-large w3-large">Add to Cart</a></div>
+<!-- Edit and Delete Buttons -->
+<div class = "editbutton"><a href="/edit/{{clothes._id}}" class="btn btn-primary">Edit Product</a></div>
+<br><br>
+<br><br>
+<div class="deletebutton">
+  <form action="/delete/{{clothes._id}}" method="POST">
+      <button type="submit">Delete</button>
+  </form>
+</div>
 {% endblock content %}
