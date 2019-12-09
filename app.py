@@ -42,7 +42,7 @@ def product_submit():
     'image': request.form.get('image_url')
     }
     print(clothes)
-    clothes_id = clothes.insert_one(clothes).inserted_id
+    clothes_id = clothes.insert_one(new_product).inserted_id
     return redirect(url_for('product_display.html', clothes_id=clothes_id))
 
 @app.route('/edit/<clothes_id>')
