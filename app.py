@@ -63,7 +63,13 @@ def clothes_update(clothes_id):
     clothes.update_one(
         {'_id': ObjectId(clothes_id)},
         {'$set': updated_product})
-    return redirect(url_for('product_display', clothes_id=clothes_id))
+    return redirect(url_for('show_product', clothes_id=clothes_id))
+
+@app.route('/delete/<clothes_id>', methods=['POST'])
+def clothes_delete(clothes_id):
+    #Delete a product
+    clothes.delete_one({'_id': ObjectId(clothes_id)})
+    return redirect(url_for('catalogue'))
 
 
 if __name__ == '__main__':
