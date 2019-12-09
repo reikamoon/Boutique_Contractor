@@ -48,7 +48,7 @@ def product_submit():
 
 @app.route('/edit/<clothes_id>')
 def clothes_edit(clothes_id):
-    #Edit a product
+    #Edit a product from the product display page.
     product = clothes.find_one({'_id': ObjectId(clothes_id)})
     return render_template('product_edit.html', clothes=product, title='Edit Product')
 
@@ -64,8 +64,6 @@ def clothes_update(clothes_id):
         {'_id': ObjectId(clothes_id)},
         {'$set': updated_product})
     return redirect(url_for('product_display', clothes_id=clothes_id))
-
-
 
 
 if __name__ == '__main__':
